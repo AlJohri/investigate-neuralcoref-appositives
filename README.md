@@ -9,14 +9,22 @@ docker run -it aljohri/investigate-neuralcoref-appositives
 
 ## Development
 
-When locally building the image for the first time, re-use the cache from the existing image.
+Build image:
 
 ```
-docker build . --cache-from aljohri/investigate-neuralcoref-appositives --tag aljohri/investigate-neuralcoref-appositives
+docker build . \
+	--cache-from aljohri/investigate-neuralcoref-appositives \
+	--tag aljohri/investigate-neuralcoref-appositives
 ```
 
-Link `main.py` to run changes without re-building the image.
+Run container with linked volume to skip constantly re-building the image:
 
 ```
 docker run -v $(pwd)/main.py:/app/main.py -it aljohri/investigate-neuralcoref-appositives
+```
+
+Push image:
+
+```
+docker push aljohri/investigate-neuralcoref-appositives
 ```
