@@ -37,9 +37,6 @@ RUN	python3 -m venv .venv && \
 	python vendor/neuralcoref/setup.py build_ext --inplace && \
 	pip install -e vendor/neuralcoref
 
-COPY requirements.txt ./
-RUN pip install -r requirements.txt --ignore-installed
-
 # trigger downloading neuralcoref model
 RUN python -c "import neuralcoref"
 
